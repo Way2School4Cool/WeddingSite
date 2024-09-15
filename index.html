@@ -28,12 +28,46 @@
         <p>
             Some content
         </p>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
+        <form id="imageUploadForm">
             <input type="file" name="image" accept="image/*" required>
+            <br/>
+            <br/>
             <input type="submit" value="Upload Image">
         </form>
-        <p class="submissionResponse">
-        </p>
+    
+        <script>
+            const form = document.getElementById('imageUploadForm');
+    
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();  // Prevent the default form submission behavior
+    
+                const formData = new FormData(form);
+    
+                try {
+                    // Send the image file using fetch
+                    const response = await fetch('/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+    
+                    // Handle different response codes
+                    if (response.status === 200) {
+                        const result = await response.text();  // Get response text
+                        alert(`Success: ${result}`);
+                    } else if (response.status === 400) {
+                        alert('Bad Request: Please upload a valid image.');
+                    } else if (response.status === 500) {
+                        alert('Server Error: Something went wrong on the server.');
+                    } else {
+                        alert(`Unexpected response code: ${response.status}`);
+                    }
+                } catch (error) {
+                    // Handle network or other errors
+                    console.error('Error uploading image:', error);
+                    alert('An error occurred while uploading the image.');
+                }
+            });
+        </script>
         <p class="submittionNotes">
             Accepts: these formats
             <br/>
