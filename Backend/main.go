@@ -16,8 +16,6 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
     start := time.Now()
     var checkpoint time.Time
 
-    fmt.Print("Invoked\n");
-
     // Set CORS headers
     response.Header().Set("Access-Control-Allow-Origin", "*")  // Allow all origins; for production, specify the allowed domain
     response.Header().Set("Access-Control-Allow-Methods", "POST")
@@ -28,16 +26,12 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
         return
     }
 
-    fmt.Print("Status Ok\n");
-
     // Parse the multipart form
     err := request.ParseMultipartForm(32 << 20)
     if err != nil {
         http.Error(response, "Could not parse form", http.StatusBadRequest)
         return
     }
-
-    fmt.Print("Parsed\n")
 
     if request.Method == http.MethodPost {
         file, _, err := request.FormFile("image")
@@ -46,8 +40,6 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
             return
         }
 		defer file.Close()
-
-        fmt.Print("Got file\n")
 
         // TODO: check for size constraints
 
@@ -92,7 +84,7 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
 	}
 
     checkpoint = time.Now()
-    fmt.Printf("Saved to file in: %v\n", checkpoint.Sub(start))
+    fmt.Printf("Saved to file @ %s\n\tSaved in: %v\n", time.Now().String(), checkpoint.Sub(start));
 }
 
 func main() {
