@@ -16,13 +16,38 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
     start := time.Now()
     var checkpoint time.Time
 
+    fmt.Print("Invoked\n");
+
+    // Set CORS headers
+    response.Header().Set("Access-Control-Allow-Origin", "*")  // Allow all origins; for production, specify the allowed domain
+    response.Header().Set("Access-Control-Allow-Methods", "POST")
+    response.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+    if request.Method == http.MethodOptions {
+        response.WriteHeader(http.StatusOK)  // Handle preflight requests
+        return
+    }
+
+    fmt.Print("Status Ok\n");
+
+    // Parse the multipart form
+    err := request.ParseMultipartForm(32 << 20)
+    if err != nil {
+        http.Error(response, "Could not parse form", http.StatusBadRequest)
+        return
+    }
+
+    fmt.Print("Parsed\n")
+
     if request.Method == http.MethodPost {
-		file, _, err := request.FormFile("file")
-		if err != nil {
-			http.Error(response, "Unable to get file from form\n", http.StatusBadRequest)
-			return
-		}
+        file, _, err := request.FormFile("image")
+            if err != nil {
+            http.Error(response, "Error retrieving the file", http.StatusBadRequest)
+            return
+        }
 		defer file.Close()
+
+        fmt.Print("Got file\n")
 
         // TODO: check for size constraints
 
@@ -72,8 +97,8 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
 
 func main() {
 	http.HandleFunc("/upload", uploadHandler)
-	fmt.Println("Server started at http://localhost:8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	fmt.Println("Server started at http://localhost:8085")
+	if err := http.ListenAndServe(":8085", nil); err != nil {
 		fmt.Println("Server failed:", err)
 	}
 }

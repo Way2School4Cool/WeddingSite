@@ -28,10 +28,8 @@
         <p>
             Some content
         </p>
-        <form id="imageUploadForm">
+        <form id="imageUploadForm" enctype="multipart/form-data">
             <input type="file" name="image" accept="image/*" required>
-            <br/>
-            <br/>
             <input type="submit" value="Upload Image">
         </form>
     
@@ -45,7 +43,7 @@
     
                 try {
                     // Send the image file using fetch
-                    const response = await fetch('/upload', {
+                    const response = await fetch('http://192.168.50.10:8085/upload', {
                         method: 'POST',
                         body: formData
                     });
@@ -55,9 +53,9 @@
                         const result = await response.text();  // Get response text
                         alert(`Success: ${result}`);
                     } else if (response.status === 400) {
-                        alert('Bad Request: Please upload a valid image.');
+                        alert('Bad Request: ' + response.statusText);
                     } else if (response.status === 500) {
-                        alert('Server Error: Something went wrong on the server.');
+                        alert('Server Error: ' + response.statusText);
                     } else {
                         alert(`Unexpected response code: ${response.status}`);
                     }
