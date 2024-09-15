@@ -1,0 +1,38 @@
+html, body {
+    background-attachment: fixed;
+    background-image: url('Images/WEBP/Background.webp');
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-size: cover; /* Adjust to cover the entire page */
+    height: max-content;
+}
+
+.header {
+    background: #b4250cd0;
+    color: whitesmoke;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 2px;
+    text-align: center;
+    width: 80%;
+}
+
+.primaryContent, .inputBox, .photos {
+    background: rgba(245, 245, 245, 0.75);
+    color: #000000;
+    font-size: 15px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 2px;
+    text-align: center;
+    width: 75%;
+}
+
+.inputBox {
+    width: 50%;
+}
+
+.photos img {
+    max-width: 100%;
+}
