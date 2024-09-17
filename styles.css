@@ -18,7 +18,7 @@ html, body {
     width: 80%;
 }
 
-.primaryContent, .inputBox, .photos {
+.primaryContent, .inputImage, .inputSong, .photos {
     background: rgba(245, 245, 245, 0.75);
     color: #000000;
     font-size: 15px;
@@ -29,7 +29,7 @@ html, body {
     width: 75%;
 }
 
-.inputBox {
+.inputImage, .inputSong {
     width: 50%;
 }
 

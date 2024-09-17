@@ -34,15 +34,35 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
     }
 
     if request.Method == http.MethodPost {
-        file, _, err := request.FormFile("image")
+        file, header, err := request.FormFile("image")
             if err != nil {
             http.Error(response, "Error retrieving the file", http.StatusBadRequest)
             return
         }
 		defer file.Close()
 
-        // TODO: check for size constraints
+        // Limit file size to 100MB
+        if header.Size > 100*1024*1024 {
+            http.Error(response, "file is too large", http.StatusBadRequest)
+            return
+        }
 
+        // Restrict file types to images only
+        allowedTypes := map[string]bool{
+            "image/gif": true,
+            "image/heif": true,
+            "image/jpeg": true,
+            "image/raw": true,
+            "image/png":  true,
+            "image/webp": true,
+        }
+
+        fileType := header.Header.Get("Content-Type")
+        if !allowedTypes[fileType] {
+            http.Error(response, "invalid file type", http.StatusBadRequest)
+            return
+        }
+            
 		// Create the uploads directory if it doesn't exist
 		if _, err := os.Stat(uploadPath); os.IsNotExist(err) {
 			err := os.Mkdir(uploadPath, os.ModePerm)
@@ -52,13 +72,11 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
 			}
 		}
 
-        // TODO: Only allow certain image formats
-        
-
         // TODO: Hash images to prevent repeats
         
         
         // TODO: Compress files
+
 
 		
         // Create a file in the uploads directory
@@ -88,7 +106,7 @@ func uploadHandler(response http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/upload", uploadHandler)
+	http.HandleFunc("/uploadimage", uploadHandler)
 	fmt.Println("Server started at http://localhost:8085")
 	if err := http.ListenAndServe(":8085", nil); err != nil {
 		fmt.Println("Server failed:", err)

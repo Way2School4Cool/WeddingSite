@@ -23,27 +23,25 @@
             Quasi aperiam voluptates facilis maxime deserunt odit omnis labore!
          </p>
     </div>
-    <div class="inputBox">
-        <h3>If you would like to share photos with us, please share them here!</h3>
-        <p>
-            Some content
-        </p>
-        <form id="imageUploadForm" enctype="multipart/form-data">
-            <input type="file" name="image" accept="image/*" required>
-            <input type="submit" value="Upload Image">
+    <div class="inputSong">
+        <h3>If you would like to request songs, please share them here!</h3>
+        <form id="songUploadForm" enctype="multipart/form-data">
+            <input type="Text" name="Song Name" accept="text" required>
+            <br/>
+            <input type="submit" value="Submit Song">
         </form>
-    
         <script>
-            const form = document.getElementById('imageUploadForm');
+            const songForm = document.getElementById('songUploadForm');
+            const songURL = 'http://192.168.50.10:8085/uploadsong'
     
-            form.addEventListener('submit', async (event) => {
+            songForm.addEventListener('submit', async (event) => {
                 event.preventDefault();  // Prevent the default form submission behavior
     
-                const formData = new FormData(form);
+                const formData = new FormData(songForm);
     
                 try {
                     // Send the image file using fetch
-                    const response = await fetch('http://192.168.50.10:8085/upload', {
+                    const response = await fetch(songURL, {
                         method: 'POST',
                         body: formData
                     });
@@ -66,11 +64,50 @@
                 }
             });
         </script>
-        <p class="submittionNotes">
-            Accepts: these formats
-            <br/>
-            File size limit: 
-        </p>
+    </div>
+    <div class="inputImage">
+        <h3>If you would like to share photos with us, please share them here!</h3>
+        <p>// TODO: Allow for uploads of more than 1 image at a time?</p>
+        <p>// TODO: Change alerts to just a "p" update</p>
+        <form id="imageUploadForm" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br/><br/>
+            <input type="submit" value="Submit Image">
+        </form>
+        <script>
+            const imageForm = document.getElementById('imageUploadForm');
+            const imageURL = 'http://192.168.50.10:8085/uploadimage'
+    
+            imageForm.addEventListener('submit', async (event) => {
+                event.preventDefault();  // Prevent the default form submission behavior
+    
+                const formData = new FormData(imageForm);
+    
+                try {
+                    // Send the image file using fetch
+                    const response = await fetch(imageURL, {
+                        method: 'POST',
+                        body: formData
+                    });
+    
+                    // Handle different response codes
+                    if (response.status === 200) {
+                        const result = await response.text();  // Get response text
+                        alert(`Success: ${result}`);
+                    } else if (response.status === 400) {
+                        alert('Bad Request: ' + response.statusText);
+                    } else if (response.status === 500) {
+                        alert('Server Error: ' + response.statusText);
+                    } else {
+                        alert(`Unexpected response code: ${response.status}`);
+                    }
+                } catch (error) {
+                    // Handle network or other errors
+                    console.error('Error uploading image:', error);
+                    alert('An error occurred while uploading the image.');
+                }
+            });
+        </script>
     </div>
     <div class="photos">
         <p>
