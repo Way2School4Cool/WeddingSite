@@ -27,12 +27,20 @@
 		<a href="/gallery.html">Gallery</a>
 	</div>
 	<script src="scripts.js"></script>
-	<div class="primary-content">
-		<h3>Thank you all for coming!</h3>
-		<p>
-			We are so happy to share this wonderful day with all of you!
-		</p>
+	
+	<!-- TODO: RSVP -->
+	
+	<div class="input-song">
+		<h3>If you would like to request songs, please share them here!</h3>
+		<form id="songUploadForm" enctype="multipart/form-data">
+			<input type="Text" name="Song Name" accept="text" required>
+			<br />
+			<input type="submit" value="Submit Song">
+		</form>
+		<!--
+		<script>
+			submitImage()
+		</script>
+		-->
 	</div>
 </body>
-
-</html>

@@ -1,9 +1,13 @@
-html, body {
+html,
+body {
     background-attachment: fixed;
     background-image: url('Images/WEBP/Background.webp');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-size: cover; /* Adjust to cover the entire page */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent repeating */
+    background-size: cover;
+    /* Adjust to cover the entire page */
     height: max-content;
 }
 
@@ -18,8 +22,11 @@ html, body {
     width: 80%;
 }
 
-.primaryContent, .inputImage, .inputSong, .photos {
-    background: rgba(245, 245, 245, 0.75);
+.primary-content,
+.input-image,
+.input-song,
+.photos {
+    background: whitesmoke;
     color: #000000;
     font-size: 15px;
     margin: 0 auto;
@@ -29,10 +36,102 @@ html, body {
     width: 75%;
 }
 
-.inputImage, .inputSong {
+.input-image,
+.input-song {
     width: 50%;
 }
 
 .photos img {
     max-width: 100%;
 }
+
+/* Navbar styling */
+.navbar {
+    background-color: #b4250cd0;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 80%; */
+    position: relative;
+}
+
+.logo a {
+    font-size: 30px;
+    font-weight: bold;
+    color: whitesmoke;
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+}
+
+.menu-icon {
+    font-size: 35px;
+    cursor: pointer;
+    color: whitesmoke;
+    position: absolute;
+    /* Use absolute positioning */
+    left: 20px;
+    /* Move it to the far left */
+    top: 50%;
+    /* Center it vertically */
+    transform: translateY(-50%);
+    /* Correct for vertical alignment */
+}
+
+/* Side panel styling */
+.side-panel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #d3543dd0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-panel a {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: whitesmoke;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-panel a:hover {
+    background-color: whitesmoke;
+    color: #b5838d;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        padding-left: 50px;
+        /* Increase left padding on smaller screens */
+    }
+
+    .menu-icon {
+        left: 10px;
+        /* Adjust icon position on smaller screens */
+    }
+
+    .logo a {
+        font-size: 20px;
+        /* Adjust logo size if needed */
+    }
+}
+
+/* TODO: Add button and textbox flexing */

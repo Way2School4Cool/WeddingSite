@@ -27,12 +27,22 @@
 		<a href="/gallery.html">Gallery</a>
 	</div>
 	<script src="scripts.js"></script>
-	<div class="primary-content">
-		<h3>Thank you all for coming!</h3>
-		<p>
-			We are so happy to share this wonderful day with all of you!
-		</p>
+	<div class="input-image">
+		<h3>If you would like to share photos with us, please share them here!</h3>
+		<p>// TODO: Change alerts to just a "p" update</p>
+
+		<form id="image-upload-form" enctype="multipart/form-data">
+			<input type="file" name="image" accept="image/*" required>
+			<br /><br />
+			<input type="submit" value="Submit Image">
+		</form>
+
+		<!-- Include the script file at the end of the body -->
+		<script src="scripts.js"></script>
+	</div>
+
+	<div class="photos">
+		<img src="Images/WEBP/Background.webp" loading="lazy" />
+		<img src="Images/WEBP/Image1.webp" loading="lazy" />
 	</div>
 </body>
-
-</html>
