@@ -22,10 +22,12 @@ body {
     width: 80%;
 }
 
-.primary-content,
 .input-image,
 .input-song,
-.photos {
+.photos,
+.primary-content,
+.timeline,
+.rsvp-name {
     background: whitesmoke;
     color: #000000;
     font-size: 15px;
@@ -36,9 +38,32 @@ body {
     width: 75%;
 }
 
+.timeline h1 {
+    margin-bottom: 0%;
+}
+
+.timeline img {
+    width: 100%;
+    height: 50px;
+    rotate: 180;
+}
+
 .input-image,
 .input-song {
     width: 50%;
+}
+
+.rsvp-name p,
+.rsvp-name h3,
+.rsvp-name h5 {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+.rsvp-name .rsvp-first-name,
+.rsvp-name .rsvp-last-name,
+.rsvp-name .rsvp-email {
+    min-width: 200px;
 }
 
 .photos img {

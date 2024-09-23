@@ -28,11 +28,29 @@
 	</div>
 	<script src="scripts.js"></script>
 	
-	<!-- TODO: RSVP -->
-	
+	<div class="rsvp-name">
+		<h3>Please input name to RSVP</h3>
+		<h5>An email will be sent on confirmation</h5>
+		<form id="rsvp-form">
+			<p>First Name</p>
+			<input class="rsvp-first-name" type="Text" name="RSVP First Name" accept="text" placeholder="John" required>
+			<p>Last Name</p>
+			<input class="rsvp-last-name" type="Text" name="RSVP First Name" accept="text" placeholder="Doe" required>
+			<p>Email</p>
+			<input class="rsvp-email" type="email" name="RSVP Email" accept="email" placeholder="nudecelebsforfree@gmail.com" required>
+			<br/>
+			<input type="submit" value="Submit">
+		</form>
+		<!--
+		<script>
+			submitImage()
+		</script>
+		-->
+	</div>
+
 	<div class="input-song">
 		<h3>If you would like to request songs, please share them here!</h3>
-		<form id="songUploadForm" enctype="multipart/form-data">
+		<form id="songUploadForm">
 			<input type="Text" name="Song Name" accept="text" required>
 			<br />
 			<input type="submit" value="Submit Song">
