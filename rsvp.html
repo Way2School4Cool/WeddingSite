@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Katya & Caleb's Wedding</title>
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css" />
+	<header>
+		<nav class="navbar">
+			<span class="menu-icon" onclick="openNav()">&#9776;</span>
+			<div class="logo">
+				<a href="#">Katya & Caleb's Wedding</a>
+			</div>
+		</nav>
+	</header>
+</head>
+
+<body>
+	<!-- Side panel -->
+	<div id="side-panel" class="side-panel">
+		<a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+		<a href="/index.html">Home</a>
+		<a href="/our-story.html">Our Story</a>
+		<a href="/wedding-details.html">Wedding Details</a>
+		<a href="/rsvp.html">RSVP</a>
+		<a href="/gallery.html">Gallery</a>
+	</div>
+	<script src="scripts.js"></script>
+	
+	<div class="rsvp-upload">
+		<h3>Please input name to RSVP</h3>
+		<h5>An email will be sent on confirmation</h5>
+		<form id="rsvp-upload-form">
+			<p>First Name</p>
+			<input name="rsvp-first-name" type="Text" accept="text" placeholder="John" required>
+			<p>Last Name</p>
+			<input name="rsvp-last-name" type="Text" accept="text" placeholder="Doe" required>
+			<p>Email</p>
+			<input name="rsvp-email" type="email" accept="email" placeholder="johndoe@aol.net">
+			<br/>
+			<input type="submit" value="Submit RSVP">
+		</form>
+		<!--
+		<script>
+			submitRSVP()
+		</script>
+		-->
+	</div>
+
+	<div class="input-song">
+		<h3>If you would like to request songs, please share them here!</h3>
+		<form id="song-upload-form">
+			<input type="Text" name="song-name" accept="text" placeholder="Song Name" required>
+			<input type="Text" name="song-artist" accept="text" placeholder="Song Artist" required>
+			<br />
+			<input type="submit" value="Submit Song">
+		</form>
+	</div>
+</body>

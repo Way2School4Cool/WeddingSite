@@ -1,15 +1,30 @@
-html, body {
+html,
+body {
     background-attachment: fixed;
     background-image: url('Images/WEBP/Background.webp');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-size: cover; /* Adjust to cover the entire page */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: max-content;
+    margin: 0;
+    padding: 0;
+}
+
+.index-html,
+.index-body {
+    background-attachment: fixed;
+    background-image: url('Images/WEBP/Homepage.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: max-content;
+    margin: 0;
+    padding: 0;
 }
 
 .header {
     background: #b4250cd0;
-    color: whitesmoke;
+    color: rgba(245, 245, 245, 0.85);
     font-size: 15px;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -18,8 +33,13 @@ html, body {
     width: 80%;
 }
 
-.primaryContent, .inputBox, .photos {
-    background: rgba(245, 245, 245, 0.75);
+.input-image,
+.input-song,
+.photos,
+.primary-content,
+.timeline,
+.rsvp-upload {
+    background: rgba(245, 245, 245, 0.85);
     color: #000000;
     font-size: 15px;
     margin: 0 auto;
@@ -29,10 +49,153 @@ html, body {
     width: 75%;
 }
 
-.inputBox {
+.timeline h1 {
+    margin-bottom: 0%;
+}
+
+.timeline img {
+    width: 100%;
+    height: 50px;
+    rotate: 180;
+}
+
+.input-image,
+.input-song {
     width: 50%;
+}
+
+.rsvp-upload p,
+.rsvp-upload h3,
+.rsvp-upload h5 {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+.rsvp-upload .rsvp-first-name,
+.rsvp-upload .rsvp-last-name,
+.rsvp-upload .rsvp-email {
+    min-width: 200px;
 }
 
 .photos img {
     max-width: 100%;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #b4250cd0;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo a {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(245, 245, 245, 0.85);
+    text-decoration: none;
+    font-family: 'Great Vibes', cursive;
+}
+
+.menu-icon {
+    font-size: 35px;
+    cursor: pointer;
+    color: rgba(245, 245, 245, 0.85);
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Side panel styling */
+.side-panel {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #d3543dd0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-panel a {
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: rgba(245, 245, 245, 0.85);
+    display: block;
+    transition: 0.3s;
+}
+
+.side-panel a:hover {
+    background-color: rgba(245, 245, 245, 0.85);
+    color: #b5838d;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        padding-left: 50px;
+    }
+
+    .menu-icon {
+        left: 10px;
+    }
+
+    .logo a {
+        font-size: 20px;
+    }
+}
+
+/* TODO: Add button and textbox flexing */
+
+/* Override the shared styles for primary-content */
+.primary-content {
+    background: rgba(245, 245, 245, 0.75);
+    width: 100%;
+    margin: 0;
+    position: fixed;
+    top: 45vh;
+    bottom: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.primary-content h1 {
+    margin: 5px 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    font-weight: normal;
+}
+
+.primary-content h3 {
+    margin: 5px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.primary-content button {
+    margin: 5px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
